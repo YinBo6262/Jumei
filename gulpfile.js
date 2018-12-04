@@ -11,7 +11,7 @@ var app = {
 //操作包文件
 gulp.task('lib', function () {
     //操作components下所有的js文件
-    gulp.src('../compoents/jquery-1.12.4.min.js')
+    gulp.src('./compoents/*.js')
         //在build下创建vendor文件夹，并将包构建进去
         .pipe(gulp.dest(app.devPath + 'vendor'))
         //在dist下创建vendor文件夹，并将包构建进去
