@@ -8,9 +8,10 @@ var uglify = require("gulp-uglify");
 var rename = require("gulp-rename");
 var fileinclude = require('gulp-file-include');
 var autoprefixer = require('gulp-autoprefixer');
-var babel = require("gulp-babel");
+// var babel = require("gulp-babel");
 var bs = require("browser-sync").create();
 
+var cssmin = require("gulp-cssmin");
 var app = {
     srcPath: './src/',
     prdPath: './dist/' //生产目录
@@ -24,11 +25,12 @@ gulp.task("less", function(){
         .pipe( autoprefixer({
             browsers: ['last 2 versions']
         }) )
+        .pipe( gulp.dest(app.prdPath+'css') )
         .pipe( cleancss() )
         .pipe( rename({
             suffix: ".min"
         }) )
-        .pipe( gulp.dest(app.prdPath + 'css') )
+        .pipe( gulp.dest(app.prdPath+'css') )
         .pipe( bs.reload({
             stream: true
         }) );
@@ -36,9 +38,6 @@ gulp.task("less", function(){
 
 gulp.task("scripts", function(){
     gulp.src(app.srcPath +"js/*.js")
-        .pipe( babel({
-            presets: ['es2015']
-        }) )
         .pipe( uglify() )
         .pipe( gulp.dest(app.prdPath +"js") );
 });

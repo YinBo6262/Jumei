@@ -1,0 +1,1 @@
+$(".box11").attr("swiper-animate-effect","bounceInUp");var mySwiper=new Swiper(".swiper-container",{lazy:!0,init:!1,on:{init:function(){swiperAnimateCache(this),swiperAnimate(this)},slideChangeTransitionEnd:function(){swiperAnimate(this)}}});mySwiper.lazy.load(),$(document).scroll(function(){var i=$(document).scrollTop();console.log(i),50<=i&&mySwiper.init()});
